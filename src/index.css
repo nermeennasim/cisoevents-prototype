@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════
+   THEME SYSTEM — 3 color themes controlled via data-theme attribute
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Theme A: Dark Navy + Electric Blue ─────────────────────────── */
+[data-theme="a"] {
+  --color-bg: #0A0E1A;
+  --color-bg-alt: #0D1321;
+  --color-surface: #111827;
+  --color-dark-bg: #060A14;
+  --color-darker-bg: #040712;
+  --color-heading: #FFFFFF;
+  --color-accent: #00A8FF;
+  --color-accent-hover: #3BBFFF;
+  --color-accent2: #00D4FF;
+  --color-text: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-text-dim: #64748B;
+  --color-border: rgba(255,255,255,0.1);
+  --color-border-light: rgba(255,255,255,0.05);
+  --color-accent-5: rgba(0, 168, 255, 0.05);
+  --color-accent-10: rgba(0, 168, 255, 0.1);
+  --color-accent-20: rgba(0, 168, 255, 0.2);
+  --color-accent-30: rgba(0, 168, 255, 0.3);
+  --color-accent2-5: rgba(0, 212, 255, 0.05);
+  --color-hover-5: rgba(59, 191, 255, 0.05);
+  --color-hover-10: rgba(59, 191, 255, 0.1);
+  --color-nav-bg: rgba(10, 14, 26, 0.95);
+  --color-nav-light: #E8F4FD;
+  --color-grid: rgba(0, 168, 255, 0.03);
+  --color-gradient-start: #0A0E1A;
+  --color-gradient-end: #0D1830;
+}
+
+/* ─── Theme B: Deep Charcoal + Gold ──────────────────────────────── */
+[data-theme="b"] {
+  --color-bg: #1C1C1E;
+  --color-bg-alt: #232325;
+  --color-surface: #2C2C2E;
+  --color-dark-bg: #141416;
+  --color-darker-bg: #0E0E10;
+  --color-heading: #FFFFFF;
+  --color-accent: #C9A84C;
+  --color-accent-hover: #E8C55A;
+  --color-accent2: #B08D3A;
+  --color-text: #B0B0B3;
+  --color-text-muted: #8A8A8D;
+  --color-text-dim: #6B6B6E;
+  --color-border: rgba(255,255,255,0.08);
+  --color-border-light: rgba(255,255,255,0.04);
+  --color-accent-5: rgba(201, 168, 76, 0.05);
+  --color-accent-10: rgba(201, 168, 76, 0.1);
+  --color-accent-20: rgba(201, 168, 76, 0.2);
+  --color-accent-30: rgba(201, 168, 76, 0.3);
+  --color-accent2-5: rgba(176, 141, 58, 0.05);
+  --color-hover-5: rgba(232, 197, 90, 0.05);
+  --color-hover-10: rgba(232, 197, 90, 0.1);
+  --color-nav-bg: rgba(28, 28, 30, 0.95);
+  --color-nav-light: #F5F0E0;
+  --color-grid: rgba(201, 168, 76, 0.03);
+  --color-gradient-start: #1C1C1E;
+  --color-gradient-end: #2A2A2E;
+}
+
+/* ─── Theme C: Dark Slate + Teal ─────────────────────────────────── */
+[data-theme="c"] {
+  --color-bg: #0F2027;
+  --color-bg-alt: #142830;
+  --color-surface: #1A3038;
+  --color-dark-bg: #0A181E;
+  --color-darker-bg: #071217;
+  --color-heading: #FFFFFF;
+  --color-accent: #00BFA5;
+  --color-accent-hover: #26D0B5;
+  --color-accent2: #009688;
+  --color-text: #B0C4CE;
+  --color-text-muted: #8BA3B0;
+  --color-text-dim: #607D8B;
+  --color-border: rgba(255,255,255,0.1);
+  --color-border-light: rgba(255,255,255,0.05);
+  --color-accent-5: rgba(0, 191, 165, 0.05);
+  --color-accent-10: rgba(0, 191, 165, 0.1);
+  --color-accent-20: rgba(0, 191, 165, 0.2);
+  --color-accent-30: rgba(0, 191, 165, 0.3);
+  --color-accent2-5: rgba(0, 150, 136, 0.05);
+  --color-hover-5: rgba(38, 208, 181, 0.05);
+  --color-hover-10: rgba(38, 208, 181, 0.1);
+  --color-nav-bg: rgba(15, 32, 39, 0.95);
+  --color-nav-light: #E0F5F0;
+  --color-grid: rgba(0, 191, 165, 0.03);
+  --color-gradient-start: #0F2027;
+  --color-gradient-end: #1A3540;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLOBAL TAILWIND OVERRIDES for dark themes
+   ═══════════════════════════════════════════════════════════════════ */
+[data-theme] body {
+  background-color: var(--color-bg) !important;
+  color: var(--color-text) !important;
+}
+
+/* Background overrides */
+[data-theme] .bg-white { background-color: var(--color-surface) !important; }
+[data-theme] .bg-gray-50 { background-color: var(--color-bg-alt) !important; }
+[data-theme] .bg-gray-100 { background-color: var(--color-dark-bg) !important; }
+[data-theme] .bg-gray-900 { background-color: var(--color-darker-bg) !important; }
+
+/* Text overrides */
+[data-theme] .text-gray-700 { color: var(--color-text) !important; }
+[data-theme] .text-gray-600 { color: var(--color-text) !important; }
+[data-theme] .text-gray-500 { color: var(--color-text-muted) !important; }
+[data-theme] .text-gray-400 { color: var(--color-text-dim) !important; }
+[data-theme] .text-gray-300 { color: var(--color-text-dim) !important; }
+[data-theme] .text-gray-800 { color: var(--color-heading) !important; }
+[data-theme] .text-gray-900 { color: var(--color-heading) !important; }
+
+/* Border overrides */
+[data-theme] .border-gray-50 { border-color: var(--color-border-light) !important; }
+[data-theme] .border-gray-100 { border-color: var(--color-border) !important; }
+[data-theme] .border-gray-200 { border-color: var(--color-border) !important; }
+[data-theme] .border-gray-300 { border-color: var(--color-border) !important; }
+
+/* Hover bg overrides */
+[data-theme] .hover\:bg-gray-50:hover { background-color: var(--color-bg-alt) !important; }
+[data-theme] .hover\:bg-gray-100:hover { background-color: var(--color-dark-bg) !important; }
+[data-theme] .hover\:bg-gray-200:hover { background-color: var(--color-surface) !important; }
+[data-theme] .hover\:text-gray-900:hover { color: var(--color-heading) !important; }
+[data-theme] .hover\:text-gray-600:hover { color: var(--color-text) !important; }
+
+/* Divide overrides */
+[data-theme] .divide-gray-100 > * + * { border-color: var(--color-border) !important; }
+
+/* Ring overrides */
+[data-theme] .ring-white { --tw-ring-color: var(--color-surface) !important; }
+
+/* Shadow on cards */
+[data-theme] .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important; }
+[data-theme] .shadow-md { box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important; }
+
+/* White/10 overlay adjustments */
+[data-theme] .bg-white\/10 { background-color: rgba(255,255,255,0.08) !important; }
+[data-theme] .bg-white\/20 { background-color: rgba(255,255,255,0.12) !important; }
+
+/* Scrollbar for dark theme */
+[data-theme] ::-webkit-scrollbar-track { background: var(--color-dark-bg) !important; }
+[data-theme] ::-webkit-scrollbar-thumb { background: var(--color-accent) !important; }
+
+/* Form input overrides */
+[data-theme] .form-input {
+  background-color: var(--color-dark-bg) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-heading) !important;
+}
+[data-theme] .form-input::placeholder {
+  color: var(--color-text-dim) !important;
+}
+[data-theme] .form-input:focus {
+  --tw-ring-color: var(--color-accent) !important;
+}
+
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--color-bg, #f8fafc);
+    color: var(--color-text, #1e293b);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-color: var(--color-accent);
+    color: #fff;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-outline {
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-200;
+  }
+  .btn-outline:hover {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    color: #fff;
+  }
+
+  .btn-navy {
+    background-color: var(--color-accent);
+    color: #fff;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  .btn-navy:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .btn-cyan {
+    background-color: var(--color-accent);
+    color: #fff;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-200 transform hover:-translate-y-0.5 hover:shadow-lg;
+  }
+  .btn-cyan:hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  .card {
+    background-color: var(--color-surface, #fff);
+    border: 1px solid var(--color-border, transparent);
+    @apply rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+  }
+
+  .section-title {
+    color: var(--color-heading);
+    @apply text-3xl md:text-4xl font-bold mb-3;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-muted);
+    @apply text-lg mb-10;
+  }
+
+  .badge-ai {
+    @apply bg-purple-100 text-purple-700 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .badge-cyber {
+    background-color: var(--color-accent-10);
+    color: var(--color-accent);
+    @apply text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .badge-startup {
+    @apply bg-orange-100 text-orange-700 text-xs font-semibold px-2.5 py-1 rounded-full;
+  }
+
+  .nav-link {
+    color: var(--color-text);
+    @apply font-medium transition-colors duration-200 relative;
+  }
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-link.active {
+    color: var(--color-accent);
+  }
+
+  .form-input {
+    @apply w-full border rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:border-transparent transition-all;
+    border-color: var(--color-border, #D1D5DB);
+    color: var(--color-text, #374151);
+  }
+  .form-input:focus {
+    --tw-ring-color: var(--color-accent);
+  }
+
+  .form-label {
+    color: var(--color-text);
+    @apply block text-sm font-medium mb-1.5;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-alt, #f1f5f9);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent, #1F2D3C);
+  border-radius: 3px;
+}
+
+/* Toast animations */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.toast-enter {
+  animation: slideInRight 0.3s ease-out;
+}
